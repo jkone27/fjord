@@ -58,4 +58,29 @@ public class Codegen extends DefaultNodeVisitor {
     }});
     JiteClassLoader.INSTANCE.define(jiteClass);
   }
+
+  @Override public void visit(final MatchExpression matchExpr) {
+    code = newCodeBlock();
+    matchExpr.getMatchExpr().accept(this);
+    for (Rule rule : matchExpr.getRules()) {
+      rule.accept(this);
+    }
+  }
+
+  @Override public void visit(final Rule rule) {
+    rule.getPattern().accept(this);
+    rule.getRuleExpr().accept(this);
+  }
+
+  @Override public void visit(final ConstantPattern pattern) {
+    code.ldc(pattern.getConstant().parseValue());
+  }
+
+  @Override public void visit(final NamedPattern pattern) {
+    code.ldc(pattern.getIdent());
+  }
+
+  @Override public void visit(final WildcardPattern pattern) {
+    code.aconst_null();
+  }
 }

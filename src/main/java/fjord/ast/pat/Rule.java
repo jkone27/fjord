@@ -34,6 +34,7 @@ public class Rule implements Node {
 
   @Override
   public void accept(NodeVisitor visitor) {
+    visitor.visit(this);
   }
 
 }

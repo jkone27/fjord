@@ -10,4 +10,11 @@ public class RecordPattern extends NodeWithChildren<FieldPattern> implements Pat
     visitor.visit(this);
   }
 
+  public void addFieldPattern(FieldPattern fieldPattern) {
+    addChild(fieldPattern);
+  }
+
+  public List<FieldPattern> getFieldPatterns() {
+    return getChildren();
+  }
 }
