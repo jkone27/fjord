@@ -18,7 +18,6 @@ public class AsPattern implements Pat {
     visitor.visit(this);
   }
 
-
   public String getIdent() {
     return ident;
   }

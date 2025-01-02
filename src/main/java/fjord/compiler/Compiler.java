@@ -37,4 +37,14 @@ public class Compiler {
       return new Value() { public Object eval() { return null; } };
     }
   }
+
+  public Value codegen(final MatchExpression matchExpr) {
+    try {
+      Codegen codegen = new Codegen(klass);
+      matchExpr.accept(codegen);
+      return (Value) JiteClassLoader.INSTANCE.loadClass(klass).newInstance();
+    } catch (Exception e) {
+      return new Value() { public Object eval() { return null; } };
+    }
+  }
 }

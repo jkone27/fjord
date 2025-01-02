@@ -10,4 +10,11 @@ public class ListPattern extends NodeWithChildren<Pat> implements Pat {
     visitor.visit(this);
   }
 
+  public void addPattern(Pat pattern) {
+    addChild(pattern);
+  }
+
+  public List<Pat> getPatterns() {
+    return getChildren();
+  }
 }

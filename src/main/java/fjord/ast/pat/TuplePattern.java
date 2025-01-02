@@ -14,4 +14,15 @@ public class TuplePattern extends NodeWithChildren<Pat> implements Pat {
     visitor.visit(this);
   }
 
+  public void addElement(Pat element) {
+    addChild(element);
+  }
+
+  public Pat getElement(int index) {
+    return getChild(index);
+  }
+
+  public int getElementCount() {
+    return getChildren().size();
+  }
 }
