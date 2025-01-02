@@ -1,0 +1,11 @@
+{
+  "name": "Java Dev Container",
+  "image": "mcr.microsoft.com/vscode/devcontainers/java:0-11",
+  "settings": {
+    "java.home": "/usr/local/sdkman/candidates/java/current"
+  },
+  "extensions": [
+    "vscjava.vscode-java-pack"
+  ],
+  "postCreateCommand": "./mvnw clean install"
+}
